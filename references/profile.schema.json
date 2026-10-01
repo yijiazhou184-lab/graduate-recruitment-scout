@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/graduate-recruitment-scout/profile.schema.json",
+  "title": "Graduate Recruitment Scout Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "candidate", "roles", "business_priorities", "companies", "sources", "search", "ranking", "output"],
+  "properties": {
+    "version": {"const": 1},
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["graduation_years", "preferred_locations", "background_signals", "languages", "work_authorization_notes"],
+      "properties": {
+        "graduation_years": {"type": "array", "items": {"type": "string", "pattern": "^[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "preferred_locations": {"$ref": "#/$defs/stringList"},
+        "background_signals": {"$ref": "#/$defs/stringList"},
+        "languages": {"$ref": "#/$defs/stringList"},
+        "work_authorization_notes": {"type": "string"}
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary", "exclude"],
+      "properties": {
+        "primary": {"$ref": "#/$defs/nonEmptyStringList"},
+        "secondary": {"$ref": "#/$defs/stringList"},
+        "exclude": {"$ref": "#/$defs/stringList"}
+      }
+    },
+    "business_priorities": {"$ref": "#/$defs/stringList"},
+    "companies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["watchlist", "priority_segments"],
+      "properties": {
+        "watchlist": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "aliases", "business_lines"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "aliases": {"$ref": "#/$defs/stringList"},
+              "business_lines": {"$ref": "#/$defs/stringList"}
+            }
+          }
+        },
+        "priority_segments": {"$ref": "#/$defs/stringList"}
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["final_source_priority", "discovery_sources"],
+      "properties": {
+        "final_source_priority": {"type": "array", "items": {"enum": ["official_employer", "official_ats", "trusted_job_board"]}, "minItems": 1, "uniqueItems": true},
+        "discovery_sources": {"type": "array", "items": {"enum": ["search_engine", "trusted_job_board", "community_lead"]}, "minItems": 1, "uniqueItems": true}
+      }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["languages", "consecutive_empty_rounds_before_stop", "include_internships", "require_full_time"],
+      "properties": {
+        "languages": {"$ref": "#/$defs/nonEmptyStringList"},
+        "consecutive_empty_rounds_before_stop": {"type": "integer", "minimum": 1, "maximum": 10},
+        "include_internships": {"type": "boolean"},
+        "require_full_time": {"type": "boolean"}
+      }
+    },
+    "ranking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weights"],
+      "properties": {
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["role", "business", "employer", "candidate", "location", "freshness"],
+          "properties": {
+            "role": {"type": "integer", "minimum": 0, "maximum": 100},
+            "business": {"type": "integer", "minimum": 0, "maximum": 100},
+            "employer": {"type": "integer", "minimum": 0, "maximum": 100},
+            "candidate": {"type": "integer", "minimum": 0, "maximum": 100},
+            "location": {"type": "integer", "minimum": 0, "maximum": 100},
+            "freshness": {"type": "integer", "minimum": 0, "maximum": 100}
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workspace_dir", "recommendation_count", "deadline_warning_days", "notification_policy", "recommendation_groups"],
+      "properties": {
+        "workspace_dir": {"type": "string", "minLength": 1},
+        "recommendation_count": {"type": "integer", "minimum": 1, "maximum": 100},
+        "deadline_warning_days": {"type": "integer", "minimum": 0, "maximum": 90},
+        "notification_policy": {"enum": ["action_only", "always", "never"]},
+        "recommendation_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "quota", "company_types"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "quota": {"type": "integer", "minimum": 0, "maximum": 100},
+              "company_types": {"$ref": "#/$defs/nonEmptyStringList"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "stringList": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "nonEmptyStringList": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
+  }
+}

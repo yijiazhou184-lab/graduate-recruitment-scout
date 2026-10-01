@@ -1,0 +1,7 @@
+interface:
+  display_name: "Graduate Recruitment Scout"
+  short_description: "Discover and track verified graduate jobs"
+  default_prompt: "Use $graduate-recruitment-scout to find and verify graduate jobs matching my profile."
+
+policy:
+  allow_implicit_invocation: true

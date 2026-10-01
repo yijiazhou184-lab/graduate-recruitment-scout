@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "candidate": {
+    "graduation_years": ["2027"],
+    "preferred_locations": ["江苏", "浙江", "上海", "深圳", "香港"],
+    "background_signals": ["海外本科", "英文工作环境", "跨国协作", "海外用户"],
+    "languages": ["中文", "English"],
+    "work_authorization_notes": "香港岗位的工作许可或签证支持未披露时标为待确认"
+  },
+  "roles": {
+    "primary": ["AI 产品经理", "Agent 产品经理", "智能客服产品经理"],
+    "secondary": ["产品经理", "产品专员", "产品管培", "项目管理", "项目经理", "项目协调", "PMO", "AI 产品运营", "数据分析", "商业分析", "Technology Analyst", "Technology Business Analyst", "Technology Project Management", "Technology PMO"],
+    "exclude": ["Investment Banking Analyst", "纯投研", "销售交易", "算法研究", "模型训练", "强研发岗位"]
+  },
+  "business_priorities": ["AI 业务应用", "智能客服", "出海/国际化", "跨境电商", "电商零售", "内容社区", "企业服务"],
+  "companies": {
+    "watchlist": [
+      {"name": "字节跳动", "aliases": ["ByteDance", "TikTok"], "business_lines": ["TikTok Shop", "商业化", "抖音电商", "飞书 AI"]},
+      {"name": "阿里巴巴", "aliases": ["Alibaba"], "business_lines": ["AIDC", "淘天出海", "钉钉 AI"]},
+      {"name": "腾讯", "aliases": ["Tencent"], "business_lines": ["微信商业产品", "跨境电商"]},
+      {"name": "美团", "aliases": ["Meituan"], "business_lines": ["核心本地商业", "AI 业务应用", "智能客服"]}
+    ],
+    "priority_segments": ["国内头部科技", "科技独角兽", "科技外企", "香港国际投行或外资金融机构中后台科技", "成长型 AI 与企业服务"]
+  },
+  "sources": {
+    "final_source_priority": ["official_employer", "official_ats", "trusted_job_board"],
+    "discovery_sources": ["search_engine", "trusted_job_board", "community_lead"]
+  },
+  "search": {
+    "languages": ["zh-CN", "en"],
+    "consecutive_empty_rounds_before_stop": 2,
+    "include_internships": false,
+    "require_full_time": true
+  },
+  "ranking": {
+    "weights": {
+      "role": 30,
+      "business": 20,
+      "employer": 20,
+      "candidate": 15,
+      "location": 10,
+      "freshness": 5
+    }
+  },
+  "output": {
+    "workspace_dir": "job-search",
+    "recommendation_count": 12,
+    "deadline_warning_days": 7,
+    "notification_policy": "action_only",
+    "recommendation_groups": [
+      {"name": "国内头部科技或科技独角兽", "quota": 4, "company_types": ["large_tech", "technology_unicorn"]},
+      {"name": "外企及香港金融科技", "quota": 4, "company_types": ["international_technology", "international_financial_institution"]},
+      {"name": "中小型或成长型公司", "quota": 4, "company_types": ["small_or_growth"]}
+    ]
+  }
+}

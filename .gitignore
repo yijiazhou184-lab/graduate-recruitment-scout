@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.DS_Store
+Thumbs.db
+.venv/
+venv/
+
+# Local profiles and generated job-search data
+profile.json
+job-search/
+graduate-jobs.csv
+daily/
+pending/
+*.pending.csv

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "candidate": {
+    "graduation_years": ["2027"],
+    "preferred_locations": ["Shanghai", "Shenzhen", "Hong Kong"],
+    "background_signals": ["English working environment", "cross-border collaboration"],
+    "languages": ["Chinese", "English"],
+    "work_authorization_notes": ""
+  },
+  "roles": {
+    "primary": ["Product Manager", "Technology Analyst"],
+    "secondary": ["Project Management", "Business Analyst", "Data Analyst"],
+    "exclude": ["research-only algorithm roles"]
+  },
+  "business_priorities": ["AI applications", "international products", "enterprise software"],
+  "companies": {
+    "watchlist": [],
+    "priority_segments": ["technology", "financial technology", "growth-stage software"]
+  },
+  "sources": {
+    "final_source_priority": ["official_employer", "official_ats", "trusted_job_board"],
+    "discovery_sources": ["search_engine", "trusted_job_board", "community_lead"]
+  },
+  "search": {
+    "languages": ["en", "zh-CN"],
+    "consecutive_empty_rounds_before_stop": 2,
+    "include_internships": false,
+    "require_full_time": true
+  },
+  "ranking": {
+    "weights": {
+      "role": 30,
+      "business": 20,
+      "employer": 20,
+      "candidate": 15,
+      "location": 10,
+      "freshness": 5
+    }
+  },
+  "output": {
+    "workspace_dir": "job-search",
+    "recommendation_count": 12,
+    "deadline_warning_days": 7,
+    "notification_policy": "action_only",
+    "recommendation_groups": []
+  }
+}
